@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Usuários — Oferte{% endblock %}
+
+{% block content %}
+<div class="md-app-bar">
+  <span class="material-icons" style="font-size:28px;">people</span>
+  <span class="md-app-bar__title">Usuários</span>
+  <div class="md-app-bar__actions">
+    <a href="/usuarios/novo/" class="md-btn md-btn--filled hide-mobile">Novo Usuário</a>
+  </div>
+</div>
+
+<div class="page-enter">
+  <div class="filter-bar">
+    <div class="md-text-field" style="min-width:250px;">
+      <input type="text" id="search-input" placeholder=" " data-mask="">
+      <label for="search-input">Buscar nome, CPF ou e-mail</label>
+      <span class="material-icons" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--md-sys-color-on-surface-variant);">search</span>
+    </div>
+    <div class="md-dropdown">
+      <select id="filter-cargo">
+        <option value="">Todos os cargos</option>
+        <option value="admin">Administrador</option>
+        <option value="dizimista">Dizimista</option>
+      </select>
+      <label>Cargo</label>
+    </div>
+    <div class="filter-group">
+      <label class="filter-checkbox">
+        <input type="checkbox" id="filter-ativos"> Ativos apenas
+      </label>
+      <label class="filter-checkbox">
+        <input type="checkbox" id="filter-dizimistas"> Dizimistas apenas
+      </label>
+    </div>
+  </div>
+
+  <div class="md-card md-card--elevated">
+    <div style="overflow-x:auto;">
+      <table class="md-table" id="usuarios-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th class="hide-mobile">CPF</th>
+            <th class="hide-mobile">Telefone</th>
+            <th>E-mail</th>
+            <th class="hide-mobile">Cargo</th>
+            <th class="hide-mobile">Dizimista</th>
+            <th>Ativo</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="usuarios-tbody">
+          <tr><td colspan="8" class="text-center text-muted">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="md-pagination" id="pagination"></div>
+  </div>
+</div>
+
+<a href="/usuarios/novo/" class="md-fab hide-desktop hide-tablet">
+  <span class="material-icons">add</span>
+</a>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/pages/usuarios.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,33 @@
+Tela de login
+
+Usuários
+    Tela de Cadastro
+        Nome
+        CPF
+        Telefone
+        Email
+        Cargo - Administrador / Dizimista
+        Ativo / Inativo
+        Dizimista / Não dizimista
+    Tela de Listagem / Edição
+    
+Dizimistas
+    Tela de listagem - Listagem - Exibindo quem ofertou e quem não ofertou
+    
+Ofertas
+    Tela de Cadastro
+        Valor
+        Dizimista
+        Data
+        Tipo de pagamento - Dinheiro / Cartão / PIX
+    Tela de Listagem e Histórico Geral / Edição
+    Tela Listagem individual por dizimista
+    
+Configuração
+    Configuração da igreja
+        Nome
+        CNPJ
+        Endereço
+    Mudança de senha
+    Atualização de dados pessoais
+    Assessibilidade para mudar cor do tema

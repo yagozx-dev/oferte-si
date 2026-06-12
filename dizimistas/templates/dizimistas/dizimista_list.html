@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dizimistas — Oferte{% endblock %}
+
+{% block content %}
+<div class="md-app-bar">
+  <span class="material-icons" style="font-size:28px;">person</span>
+  <span class="md-app-bar__title">Dizimistas</span>
+</div>
+
+<div class="page-enter">
+  <div class="filter-bar">
+    <div class="md-dropdown">
+      <select id="filter-mes">
+        <option value="1">Janeiro</option>
+        <option value="2">Fevereiro</option>
+        <option value="3">Março</option>
+        <option value="4">Abril</option>
+        <option value="5">Maio</option>
+        <option value="6">Junho</option>
+        <option value="7">Julho</option>
+        <option value="8">Agosto</option>
+        <option value="9">Setembro</option>
+        <option value="10">Outubro</option>
+        <option value="11">Novembro</option>
+        <option value="12">Dezembro</option>
+      </select>
+      <label>Mês</label>
+    </div>
+    <div class="md-dropdown">
+      <select id="filter-ano">
+      </select>
+      <label>Ano</label>
+    </div>
+  </div>
+
+  <div class="summary-row" id="resumo-card">
+    <div class="md-card md-card--filled">
+      <div class="text-small text-muted">Total</div>
+      <div style="font-size:24px;font-weight:700;" id="total-dizimistas">0</div>
+    </div>
+    <div class="md-card md-card--filled" style="border-left:4px solid #2E7D32;">
+      <div class="text-small text-muted">Ofertaram</div>
+      <div style="font-size:24px;font-weight:700;color:#2E7D32;" id="total-ofertou">0</div>
+    </div>
+    <div class="md-card md-card--filled" style="border-left:4px solid #C62828;">
+      <div class="text-small text-muted">Não ofertaram</div>
+      <div style="font-size:24px;font-weight:700;color:#C62828;" id="total-nao-ofertou">0</div>
+    </div>
+  </div>
+
+  <div class="dizimista-grid" id="dizimistas-grid">
+    <div class="text-center text-muted" style="grid-column:1/-1;padding:48px;">Carregando...</div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/pages/dizimistas.js' %}"></script>
+{% endblock %}

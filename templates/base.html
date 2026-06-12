@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="{{ theme_color|default:'#6750A4' }}">
+  <title>{% block title %}Oferte{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/material-theme.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  {% block extra_head %}{% endblock %}
+  <style>
+    :root {
+      --md-sys-color-primary: {{ theme_color|default:'#6750A4' }};
+    }
+    {% if user.is_authenticated and user_profile.theme_primary_color %}
+    :root {
+      --md-sys-color-primary: {{ user_profile.theme_primary_color }};
+    }
+    {% endif %}
+    .is-login-page .sidebar,
+    .is-login-page .md-bottom-nav {
+      display: none !important;
+    }
+    .is-login-page .main-content {
+      margin-left: 0 !important;
+    }
+  </style>
+</head>
+<body class="{% if request.path == '/login/' %}is-login-page{% endif %}">
+  <div class="md-progress" id="progress-bar">
+    <div class="md-progress__bar"></div>
+  </div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__header">
+      <div class="sidebar__logo">
+        <span class="material-icons">church</span>
+      </div>
+      <span class="sidebar__title">Oferte</span>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="/" class="sidebar__item {% if request.path == '/' %}sidebar__item--active{% endif %}">
+        <span class="material-icons">dashboard</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="/usuarios/" class="sidebar__item {% if '/usuarios' in request.path %}sidebar__item--active{% endif %}">
+        <span class="material-icons">people</span>
+        <span>Usuários</span>
+      </a>
+      <a href="/dizimistas/" class="sidebar__item {% if '/dizimistas' in request.path %}sidebar__item--active{% endif %}">
+        <span class="material-icons">person</span>
+        <span>Dizimistas</span>
+      </a>
+      <a href="/ofertas/" class="sidebar__item {% if '/ofertas' in request.path %}sidebar__item--active{% endif %}">
+        <span class="material-icons">payments</span>
+        <span>Ofertas</span>
+      </a>
+      <a href="/configuracoes/" class="sidebar__item {% if '/configuracoes' in request.path %}sidebar__item--active{% endif %}">
+        <span class="material-icons">settings</span>
+        <span>Configurações</span>
+      </a>
+    </nav>
+    <div class="md-divider"></div>
+    <div style="padding: 8px;">
+      <a href="/perfil/" class="sidebar__item">
+        <span class="material-icons">account_circle</span>
+        <span id="sidebar-user-name">{{ user.nome|default:'' }}</span>
+      </a>
+      <button class="sidebar__item" id="logout-btn" style="width:100%;border:none;background:none;cursor:pointer;color:var(--md-sys-color-error);">
+        <span class="material-icons">logout</span>
+        <span>Sair</span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main-content" id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <nav class="md-bottom-nav">
+    <a href="/" class="md-bottom-nav__item {% if request.path == '/' %}md-bottom-nav__item--active{% endif %}">
+      <span class="material-icons">dashboard</span>
+      <span>Início</span>
+    </a>
+    <a href="/usuarios/" class="md-bottom-nav__item {% if '/usuarios' in request.path %}md-bottom-nav__item--active{% endif %}">
+      <span class="material-icons">people</span>
+      <span>Usuários</span>
+    </a>
+    <a href="/dizimistas/" class="md-bottom-nav__item {% if '/dizimistas' in request.path %}md-bottom-nav__item--active{% endif %}">
+      <span class="material-icons">person</span>
+      <span>Dizimistas</span>
+    </a>
+    <a href="/ofertas/" class="md-bottom-nav__item {% if '/ofertas' in request.path %}md-bottom-nav__item--active{% endif %}">
+      <span class="material-icons">payments</span>
+      <span>Ofertas</span>
+    </a>
+    <a href="/configuracoes/" class="md-bottom-nav__item {% if '/configuracoes' in request.path %}md-bottom-nav__item--active{% endif %}">
+      <span class="material-icons">settings</span>
+      <span>Config</span>
+    </a>
+  </nav>
+
+  <script src="{% static 'js/api.js' %}"></script>
+  <script src="{% static 'js/theme.js' %}"></script>
+  <script src="{% static 'js/components.js' %}"></script>
+  {% block scripts %}{% endblock %}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.md-btn, .md-fab, .sidebar__item, .md-bottom-nav__item, .md-chip').forEach(el => {
+        mdRipple(el);
+      });
+
+      const user = api.getUser();
+      const nameEl = document.getElementById('sidebar-user-name');
+      if (user && user.nome && nameEl) {
+        nameEl.textContent = user.nome;
+      }
+
+      const logoutBtn = document.getElementById('logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          mdDialog('Sair', 'Deseja realmente sair?', async () => {
+            try {
+              await api.post('/api/auth/logout/', { refresh: api.getRefreshToken() });
+            } catch (e) {}
+            api.clearTokens();
+            window.location.href = '/login/';
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

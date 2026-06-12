@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Meus Dados — Oferte{% endblock %}
+
+{% block content %}
+<div class="md-app-bar">
+  <a href="/configuracoes/" class="md-btn md-btn--tonal" style="text-decoration:none;">
+    <span class="material-icons">arrow_back</span>
+  </a>
+  <span class="md-app-bar__title">Meus Dados</span>
+</div>
+
+<div class="page-enter">
+  <div class="md-card md-card--elevated" style="max-width:500px;margin:24px auto;">
+    <form id="profile-form">
+      <div id="form-errors" style="display:none;background-color:var(--md-sys-color-error-container);color:var(--md-sys-color-on-error-container);padding:12px;border-radius:var(--md-sys-shape-small);margin-bottom:16px;font-size:14px;"></div>
+
+      <div class="md-text-field">
+        <input type="text" id="nome" placeholder=" " required>
+        <label for="nome">Nome</label>
+      </div>
+
+      <div class="md-text-field">
+        <input type="text" id="cpf" placeholder=" " readonly style="background-color:var(--md-sys-color-surface-variant);">
+        <label for="cpf">CPF</label>
+      </div>
+
+      <div class="md-text-field">
+        <input type="text" id="telefone" placeholder=" " data-mask="phone">
+        <label for="telefone">Telefone</label>
+      </div>
+
+      <div class="md-text-field">
+        <input type="email" id="email" placeholder=" " readonly style="background-color:var(--md-sys-color-surface-variant);">
+        <label for="email">E-mail</label>
+      </div>
+
+      <button type="submit" class="md-btn md-btn--filled w-full">Salvar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/pages/profile.js' %}"></script>
+{% endblock %}

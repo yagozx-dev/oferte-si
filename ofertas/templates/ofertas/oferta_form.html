@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{% if oferta %}Editar{% else %}Nova{% endif %} Oferta — Oferte{% endblock %}
+
+{% block content %}
+<div class="md-app-bar">
+  <a href="/ofertas/" class="md-btn md-btn--tonal" style="text-decoration:none;">
+    <span class="material-icons">arrow_back</span>
+  </a>
+  <span class="md-app-bar__title">{% if oferta %}Editar{% else %}Nova{% endif %} Oferta</span>
+</div>
+
+<div class="page-enter">
+  <div class="md-card md-card--elevated" style="max-width:500px;margin:24px auto;">
+    <form id="oferta-form">
+      <div id="form-errors" style="display:none;background-color:var(--md-sys-color-error-container);color:var(--md-sys-color-on-error-container);padding:12px;border-radius:var(--md-sys-shape-small);margin-bottom:16px;font-size:14px;"></div>
+
+      <div class="md-dropdown">
+        <select id="dizimista" required>
+          <option value="">Selecione um dizimista</option>
+        </select>
+        <label>Dizimista</label>
+      </div>
+
+      <div class="md-text-field">
+        <input type="text" id="valor" placeholder=" " data-mask="currency" required>
+        <label for="valor">Valor (R$)</label>
+        <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--md-sys-color-on-surface-variant);font-weight:500;">R$</span>
+      </div>
+
+      <div class="md-text-field">
+        <input type="date" id="data" placeholder=" " required>
+        <label for="data">Data</label>
+      </div>
+
+      <div class="md-dropdown">
+        <select id="tipo_pagamento" required>
+          <option value="dinheiro">Dinheiro</option>
+          <option value="cartao">Cartão</option>
+          <option value="pix">PIX</option>
+        </select>
+        <label>Tipo de Pagamento</label>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:24px;">
+        <button type="submit" class="md-btn md-btn--filled flex-1">Salvar</button>
+        <a href="/ofertas/" class="md-btn md-btn--outlined flex-1" style="text-align:center;text-decoration:none;">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/pages/oferta-form.js' %}"></script>
+{% endblock %}

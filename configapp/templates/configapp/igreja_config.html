@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Configuração da Igreja — Oferte{% endblock %}
+
+{% block content %}
+<div class="md-app-bar">
+  <a href="/configuracoes/" class="md-btn md-btn--tonal" style="text-decoration:none;">
+    <span class="material-icons">arrow_back</span>
+  </a>
+  <span class="md-app-bar__title">Configuração da Igreja</span>
+</div>
+
+<div class="page-enter">
+  <div class="md-card md-card--elevated" style="max-width:600px;margin:24px auto;">
+    <form id="igreja-form">
+      <div id="form-errors" style="display:none;background-color:var(--md-sys-color-error-container);color:var(--md-sys-color-on-error-container);padding:12px;border-radius:var(--md-sys-shape-small);margin-bottom:16px;font-size:14px;"></div>
+
+      <div class="md-text-field">
+        <input type="text" id="nome" placeholder=" " required>
+        <label for="nome">Nome da Igreja</label>
+      </div>
+
+      <div class="md-text-field">
+        <input type="text" id="cnpj" placeholder=" " data-mask="cnpj">
+        <label for="cnpj">CNPJ</label>
+      </div>
+
+      <div class="md-text-field">
+        <textarea id="endereco" placeholder=" " rows="3"></textarea>
+        <label for="endereco">Endereço</label>
+      </div>
+
+      <button type="submit" class="md-btn md-btn--filled w-full">Salvar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/pages/igreja-config.js' %}"></script>
+{% endblock %}

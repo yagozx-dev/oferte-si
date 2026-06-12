@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ofertas de — Oferte{% endblock %}
+
+{% block content %}
+<div class="md-app-bar">
+  <a href="/dizimistas/" class="md-btn md-btn--tonal" style="text-decoration:none;">
+    <span class="material-icons">arrow_back</span>
+  </a>
+  <span class="md-app-bar__title" id="page-title">Ofertas do Dizimista</span>
+</div>
+
+<div class="page-enter">
+  <div class="md-card md-card--elevated" id="dizimista-card" style="margin-bottom:24px;">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div class="md-avatar" id="dizimista-avatar" style="width:56px;height:56px;font-size:24px;">?</div>
+      <div>
+        <div style="font-size:20px;font-weight:500;" id="dizimista-nome"></div>
+        <div class="text-muted" id="dizimista-cpf"></div>
+      </div>
+    </div>
+    <div class="md-divider" style="margin:16px 0;"></div>
+    <div class="summary-row">
+      <div>
+        <div class="text-small text-muted">Total de ofertas</div>
+        <div style="font-size:24px;font-weight:700;" id="total-count">0</div>
+      </div>
+      <div>
+        <div class="text-small text-muted">Valor total</div>
+        <div style="font-size:24px;font-weight:700;" id="total-valor">R$ 0,00</div>
+      </div>
+      <div>
+        <div class="text-small text-muted">Última oferta</div>
+        <div style="font-size:16px;" id="ultima-data">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="md-card md-card--elevated">
+    <div style="overflow-x:auto;">
+      <table class="md-table" id="ofertas-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Valor</th>
+            <th class="hide-mobile">Tipo</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="ofertas-tbody">
+          <tr><td colspan="4" class="text-center text-muted">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/pages/oferta-dizimista.js' %}"></script>
+{% endblock %}

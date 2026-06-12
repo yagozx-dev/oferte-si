@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ofertas — Oferte{% endblock %}
+
+{% block content %}
+<div class="md-app-bar">
+  <span class="material-icons" style="font-size:28px;">payments</span>
+  <span class="md-app-bar__title">Ofertas</span>
+  <div class="md-app-bar__actions">
+    <a href="/ofertas/nova/" class="md-btn md-btn--filled hide-mobile">Nova Oferta</a>
+  </div>
+</div>
+
+<div class="page-enter">
+  <div class="md-summary-card" id="total-card">
+    <div class="md-summary-card__label">Total do período</div>
+    <div class="md-summary-card__value" id="total-valor">R$ 0,00</div>
+  </div>
+
+  <div class="filter-bar">
+    <div class="md-dropdown">
+      <select id="filter-dizimista">
+        <option value="">Todos os dizimistas</option>
+      </select>
+      <label>Dizimista</label>
+    </div>
+    <div class="md-text-field" style="min-width:160px;">
+      <input type="date" id="filter-data-inicio" placeholder=" ">
+      <label for="filter-data-inicio">Data início</label>
+    </div>
+    <div class="md-text-field" style="min-width:160px;">
+      <input type="date" id="filter-data-fim" placeholder=" ">
+      <label for="filter-data-fim">Data fim</label>
+    </div>
+    <div class="md-dropdown">
+      <select id="filter-tipo">
+        <option value="">Todos os tipos</option>
+        <option value="dinheiro">Dinheiro</option>
+        <option value="cartao">Cartão</option>
+        <option value="pix">PIX</option>
+      </select>
+      <label>Tipo</label>
+    </div>
+  </div>
+
+  <div class="md-card md-card--elevated">
+    <div style="overflow-x:auto;">
+      <table class="md-table" id="ofertas-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Dizimista</th>
+            <th>Valor</th>
+            <th class="hide-mobile">Tipo</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="ofertas-tbody">
+          <tr><td colspan="5" class="text-center text-muted">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="md-pagination" id="pagination"></div>
+  </div>
+</div>
+
+<a href="/ofertas/nova/" class="md-fab hide-desktop hide-tablet">
+  <span class="material-icons">add</span>
+</a>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/pages/ofertas.js' %}"></script>
+{% endblock %}

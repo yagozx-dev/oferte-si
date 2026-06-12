@@ -1,0 +1,144 @@
+/* Desktop: >= 1024px */
+@media (min-width: 1024px) {
+  .sidebar {
+    display: flex;
+  }
+  .md-bottom-nav {
+    display: none;
+  }
+  .main-content {
+    margin-left: 280px;
+  }
+  .hide-desktop {
+    display: none !important;
+  }
+  .md-fab {
+    bottom: 32px;
+  }
+}
+
+/* Tablet: 768px - 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sidebar {
+    width: 72px;
+  }
+  .sidebar__title,
+  .sidebar__item span:not(.material-icons) {
+    display: none;
+  }
+  .sidebar__item {
+    justify-content: center;
+    padding: 12px;
+    border-radius: var(--md-sys-shape-large);
+  }
+  .sidebar__header {
+    justify-content: center;
+    padding: 16px;
+  }
+  .main-content {
+    margin-left: 72px;
+  }
+  .md-bottom-nav {
+    display: none;
+  }
+  .hide-tablet {
+    display: none !important;
+  }
+  .md-fab {
+    bottom: 32px;
+  }
+}
+
+/* Mobile: < 768px */
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+  }
+  .md-bottom-nav {
+    display: flex;
+  }
+  .main-content {
+    margin-left: 0;
+    padding: 16px;
+    padding-bottom: 96px;
+  }
+  .md-app-bar {
+    height: 56px;
+  }
+  .hide-mobile {
+    display: none !important;
+  }
+  .md-fab {
+    bottom: 96px;
+  }
+  .md-table {
+    display: block;
+  }
+  .md-table thead {
+    display: none;
+  }
+  .md-table tbody,
+  .md-table tr,
+  .md-table td {
+    display: block;
+    width: 100%;
+  }
+  .md-table tr {
+    background-color: var(--md-sys-color-surface);
+    border-radius: var(--md-sys-shape-medium);
+    box-shadow: var(--md-sys-elevation-level1);
+    margin-bottom: 12px;
+    padding: 12px;
+  }
+  .md-table td {
+    border: none;
+    padding: 8px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .md-table td::before {
+    content: attr(data-label);
+    font-weight: 500;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 12px;
+  }
+  .md-row {
+    flex-direction: column;
+  }
+  .md-col {
+    width: 100%;
+  }
+}
+
+/* Grid */
+.md-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.md-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.md-col--6 {
+  flex: 0 0 calc(50% - 8px);
+}
+
+.md-col--4 {
+  flex: 0 0 calc(33.33% - 11px);
+}
+
+.md-col--3 {
+  flex: 0 0 calc(25% - 12px);
+}
+
+@media (max-width: 767px) {
+  .md-col--6,
+  .md-col--4,
+  .md-col--3 {
+    flex: 0 0 100%;
+  }
+}

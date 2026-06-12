@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Configurações — Oferte{% endblock %}
+
+{% block content %}
+<div class="md-app-bar">
+  <span class="material-icons" style="font-size:28px;">settings</span>
+  <span class="md-app-bar__title">Configurações</span>
+</div>
+
+<div class="page-enter">
+  <div class="md-row" style="max-width:600px;margin:24px auto;">
+    <div class="md-col">
+      <a href="/configuracoes/igreja/" style="text-decoration:none;color:inherit;">
+        <div class="md-card md-card--elevated" style="display:flex;align-items:center;gap:16px;cursor:pointer;">
+          <div style="width:48px;height:48px;background-color:var(--md-sys-color-primary-container);border-radius:var(--md-sys-shape-medium);display:flex;align-items:center;justify-content:center;">
+            <span class="material-icons" style="color:var(--md-sys-color-on-primary-container);">church</span>
+          </div>
+          <div>
+            <div style="font-weight:500;font-size:16px;">Igreja</div>
+            <div class="text-small text-muted">Nome, CNPJ e endereço</div>
+          </div>
+          <span class="material-icons" style="margin-left:auto;color:var(--md-sys-color-on-surface-variant);">chevron_right</span>
+        </div>
+      </a>
+
+      <a href="/configuracoes/tema/" style="text-decoration:none;color:inherit;">
+        <div class="md-card md-card--elevated mt-16" style="display:flex;align-items:center;gap:16px;cursor:pointer;">
+          <div style="width:48px;height:48px;background-color:var(--md-sys-color-primary-container);border-radius:var(--md-sys-shape-medium);display:flex;align-items:center;justify-content:center;">
+            <span class="material-icons" style="color:var(--md-sys-color-on-primary-container);">palette</span>
+          </div>
+          <div>
+            <div style="font-weight:500;font-size:16px;">Personalizar Tema</div>
+            <div class="text-small text-muted">Cor primária e acessibilidade</div>
+          </div>
+          <span class="material-icons" style="margin-left:auto;color:var(--md-sys-color-on-surface-variant);">chevron_right</span>
+        </div>
+      </a>
+
+      <a href="/perfil/" style="text-decoration:none;color:inherit;">
+        <div class="md-card md-card--elevated mt-16" style="display:flex;align-items:center;gap:16px;cursor:pointer;">
+          <div style="width:48px;height:48px;background-color:var(--md-sys-color-primary-container);border-radius:var(--md-sys-shape-medium);display:flex;align-items:center;justify-content:center;">
+            <span class="material-icons" style="color:var(--md-sys-color-on-primary-container);">account_circle</span>
+          </div>
+          <div>
+            <div style="font-weight:500;font-size:16px;">Meus Dados</div>
+            <div class="text-small text-muted">Nome, telefone e e-mail</div>
+          </div>
+          <span class="material-icons" style="margin-left:auto;color:var(--md-sys-color-on-surface-variant);">chevron_right</span>
+        </div>
+      </a>
+
+      <a href="/alterar-senha/" style="text-decoration:none;color:inherit;">
+        <div class="md-card md-card--elevated mt-16" style="display:flex;align-items:center;gap:16px;cursor:pointer;">
+          <div style="width:48px;height:48px;background-color:var(--md-sys-color-primary-container);border-radius:var(--md-sys-shape-medium);display:flex;align-items:center;justify-content:center;">
+            <span class="material-icons" style="color:var(--md-sys-color-on-primary-container);">lock</span>
+          </div>
+          <div>
+            <div style="font-weight:500;font-size:16px;">Alterar Senha</div>
+            <div class="text-small text-muted">Troque sua senha de acesso</div>
+          </div>
+          <span class="material-icons" style="margin-left:auto;color:var(--md-sys-color-on-surface-variant);">chevron_right</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
