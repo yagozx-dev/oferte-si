@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Personalizar Tema — Oferte{% endblock %}
+
+{% block content %}
+<div class="md-app-bar">
+  <a href="/configuracoes/" class="md-btn md-btn--tonal" style="text-decoration:none;">
+    <span class="material-icons">arrow_back</span>
+  </a>
+  <span class="md-app-bar__title">Personalizar Tema</span>
+</div>
+
+<div class="page-enter">
+  <div class="md-card md-card--elevated" style="max-width:600px;margin:24px auto;">
+    <form id="tema-form">
+      <div id="form-errors" style="display:none;background-color:var(--md-sys-color-error-container);color:var(--md-sys-color-on-error-container);padding:12px;border-radius:var(--md-sys-shape-small);margin-bottom:16px;font-size:14px;"></div>
+
+      <h3 style="margin-bottom:16px;">Cor Primária</h3>
+      <div class="color-grid" id="color-grid">
+        <button type="button" class="color-grid__item" style="background-color:#6750A4;" data-color="#6750A4"></button>
+        <button type="button" class="color-grid__item" style="background-color:#1976D2;" data-color="#1976D2"></button>
+        <button type="button" class="color-grid__item" style="background-color:#388E3C;" data-color="#388E3C"></button>
+        <button type="button" class="color-grid__item" style="background-color:#D32F2F;" data-color="#D32F2F"></button>
+        <button type="button" class="color-grid__item" style="background-color:#F57C00;" data-color="#F57C00"></button>
+        <button type="button" class="color-grid__item" style="background-color:#C2185B;" data-color="#C2185B"></button>
+        <button type="button" class="color-grid__item" style="background-color:#00796B;" data-color="#00796B"></button>
+        <button type="button" class="color-grid__item" style="background-color:#616161;" data-color="#616161"></button>
+      </div>
+
+      <div style="margin-top:16px;">
+        <label class="text-small text-muted">Ou escolha uma cor personalizada</label>
+        <input type="color" id="custom-color" value="#6750A4" style="width:100%;height:48px;border:none;border-radius:var(--md-sys-shape-small);cursor:pointer;margin-top:4px;">
+      </div>
+
+      <div id="contrast-indicator" style="margin-top:16px;padding:8px 12px;border-radius:var(--md-sys-shape-small);font-size:13px;display:none;"></div>
+
+      <h3 style="margin:24px 0 16px;">Pré-visualização</h3>
+      <div class="theme-preview" id="theme-preview">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
+          <span class="md-chip">Chip exemplo</span>
+          <span class="md-chip md-chip--success">Sucesso</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
+          <button type="button" class="md-btn md-btn--filled">Botão</button>
+          <button type="button" class="md-btn md-btn--tonal">Tonal</button>
+          <button type="button" class="md-btn md-btn--outlined">Outlined</button>
+        </div>
+        <div class="md-text-field">
+          <input type="text" placeholder=" " value="Texto de exemplo">
+          <label>Campo de texto</label>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:24px;">
+        <button type="submit" class="md-btn md-btn--filled flex-1">Salvar</button>
+        <button type="button" id="reset-theme" class="md-btn md-btn--outlined flex-1">Restaurar padrão</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/pages/tema-config.js' %}"></script>
+{% endblock %}

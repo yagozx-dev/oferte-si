@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Login — Oferte{% endblock %}
+
+{% block content %}
+<div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: var(--md-sys-color-background); padding: 16px;">
+  <div class="md-card md-card--elevated" style="width: 100%; max-width: 400px; padding: 32px;">
+    <div style="text-align: center; margin-bottom: 32px;">
+      <div style="width: 64px; height: 64px; background-color: var(--md-sys-color-primary); border-radius: var(--md-sys-shape-medium); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+        <span class="material-icons" style="font-size: 36px; color: var(--md-sys-color-on-primary);">church</span>
+      </div>
+      <h1 style="font-size: 24px; font-weight: 500; margin-bottom: 4px;">Oferte</h1>
+      <p style="color: var(--md-sys-color-on-surface-variant); font-size: 14px;">Sistema de Gestão de Igreja</p>
+    </div>
+
+    <form id="login-form">
+      <div id="login-error" style="display: none; background-color: var(--md-sys-color-error-container); color: var(--md-sys-color-on-error-container); padding: 12px; border-radius: var(--md-sys-shape-small); margin-bottom: 16px; font-size: 14px;"></div>
+
+      <div class="md-text-field">
+        <input type="email" id="email" placeholder=" " required>
+        <label for="email">E-mail</label>
+      </div>
+
+      <div class="md-text-field">
+        <input type="password" id="password" placeholder=" " required>
+        <label for="password">Senha</label>
+        <button type="button" id="toggle-password" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer; color: var(--md-sys-color-on-surface-variant);">
+          <span class="material-icons">visibility</span>
+        </button>
+      </div>
+
+      <button type="submit" class="md-btn md-btn--filled w-full" style="height: 48px; border-radius: 24px; margin-top: 8px;">
+        Entrar
+      </button>
+
+      <p style="text-align: center; margin-top: 16px; font-size: 13px; color: var(--md-sys-color-on-surface-variant);">
+        <a href="#" style="color: var(--md-sys-color-primary); text-decoration: none;">Esqueceu a senha?</a>
+      </p>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/pages/login.js' %}"></script>
+{% endblock %}
